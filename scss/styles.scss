@@ -1,0 +1,253 @@
+$main-font: 'Montserrat', sans-serif;
+$primary-color: #002349;
+$primary-light-color: #002753;
+$secondary-color: #3774B3;
+$secondary-light-color: #4A89C9;
+$secondary-dark-color: #1D558F;
+$background-primary: #ffffff;
+$gray: #D1D3E0;
+
+.page {
+  font-family: $main-font;
+  padding: 100px 50px 50px 50px;
+  max-width: 1750px;
+  margin: 0 auto;
+
+}
+
+.content {
+  height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.title-text {
+  color: $secondary-color;
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 2.6px;
+}
+
+.header {
+  display: flex;
+  gap: 32px;
+}
+
+.header-text {
+  font-size: 60px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1.93px;
+  color: $primary-color;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.slider-wrapper {}
+
+.slider-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 100px;
+  padding-bottom: 40px;
+}
+
+.slider-button {
+  display: flex;
+  gap: 20px;
+  font-weight: 400;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+}
+
+.divider {
+  width: 1px;
+  height: 38px;
+  background-color: $secondary-light-color;
+  margin-right: 38px;
+  margin-left: 26px;
+}
+
+.arrow {
+  width: 6px;
+  height: 9px;
+}
+
+.arrow-right {
+  transform: rotate(180deg);
+}
+
+.slider {}
+
+.slick-slide {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.slick-list {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.slick-dots {
+    top: -50px;
+    // left: 0;
+    display: flex;
+    gap: 6px;
+    // width: 100%;
+    padding: 0;
+    margin: 0;
+
+      li {
+        width: 70px;
+        height: 3px;
+        background-color: $secondary-light-color;
+      }
+}
+
+.slick-active {
+  background-color: $secondary-dark-color;
+}
+
+.slide {
+  width: 100%;
+}
+
+.details-description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  background-color: $background-primary;
+  text-transform: uppercase;
+  padding: 22px 56px 28px 56px;
+  border-bottom: 3px solid $secondary-light-color;
+  margin: -120px 20px 0 20px;
+  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0px 55px 24px -32.4px rgba(157, 173, 200, 0.44);
+
+}
+
+.general-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $primary-color;
+}
+
+.price {
+  font-weight: 400;
+  font-size: 43px;
+  line-height: 100%;
+  letter-spacing: -1.32px;
+  padding-bottom: 24px;
+}
+
+.name {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 3.6px;
+  padding-bottom: 16px;
+}
+
+.address {
+  font-weight: 400;
+  letter-spacing: 2.1px;
+}
+
+.apartment-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info-block-wrapper {
+  display: flex;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 40px 4px;
+  color: $primary-light-color;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &:not(:last-child) {
+      border-right: 1.2px solid $gray;
+    }
+}
+
+.numbers {
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 3px;
+}
+
+.info-text {
+  font-weight: 400;
+  font-size: 15.84px;
+  letter-spacing: 1.32px;
+}
+
+.view-details-button {
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.view-details {
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  color: $primary-color;
+}
+
+.view-all-button {
+  width: max-content;
+  font-size: 300;
+  letter-spacing: 2.6px;
+  color: $primary-color;
+  padding: 12px 32px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid $secondary-dark-color;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 100px;
+  margin-left: auto;
+}
