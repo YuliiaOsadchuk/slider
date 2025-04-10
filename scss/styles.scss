@@ -1,35 +1,45 @@
-$main-font: 'Montserrat', sans-serif;
-$primary-color: #002349;
-$primary-light-color: #002753;
-$secondary-color: #3774B3;
-$secondary-light-color: #4A89C9;
-$secondary-dark-color: #1D558F;
-$background-primary: #ffffff;
-$gray: #D1D3E0;
+@use "breakpoints";
+@use "variables";
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
 
 .page {
-  font-family: $main-font;
-  padding: 100px 50px 50px 50px;
+  font-family: variables.$main-font;
   max-width: 1750px;
+  padding: 32px 16px;
   margin: 0 auto;
+  height: 100%;
 
+    @media (min-width: breakpoints.$breakpoint-sm) {
+        padding: 40px 24px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-2xl) {
+      padding: 100px 50px 50px 50px;
+    }
 }
 
 .content {
-  height: calc(100vh - 150px);
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .title {
   display: flex;
   flex-direction: column;
-  gap: 45px;
+  gap: 24px;
+
+    @media (min-width: breakpoints.$breakpoint-2xl) {
+        gap: 45px;
+    }
 }
 
 .title-text {
-  color: $secondary-color;
+  color: variables.$secondary-color;
   text-transform: uppercase;
   font-weight: 400;
   line-height: 100%;
@@ -38,29 +48,50 @@ $gray: #D1D3E0;
 
 .header {
   display: flex;
-  gap: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      gap: 24px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-xl) {
+      gap: 32px;
+    }
 }
 
 .header-text {
-  font-size: 60px;
+  font-size: 24px;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 1.93px;
-  color: $primary-color;
+  color: variables.$primary-color;
 }
 
 .bold {
   font-weight: 500;
 }
 
-.slider-wrapper {}
+.slider-wrapper {
+  max-width: 1800px;
+  overflow: hidden;
+}
 
 .slider-buttons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 100px;
-  padding-bottom: 40px;
+  padding: 16px;
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      padding-right: 60px;
+      padding-bottom: 30px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-xl) {
+      padding-right: 100px;
+      padding-bottom: 40px;
+    }
 }
 
 .slider-button {
@@ -73,22 +104,32 @@ $gray: #D1D3E0;
   outline: none;
   background-color: transparent;
   cursor: pointer;
+  display: none;
 
     img {
       width: 100%;
       height: 100%;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-md) {
+      display: block;
     }
 }
 
 .divider {
   width: 1px;
   height: 38px;
-  background-color: $secondary-light-color;
-  margin-right: 38px;
-  margin-left: 26px;
+  background-color: variables.$secondary-light-color;
+  display: none;
+
+    @media (min-width: breakpoints.$breakpoint-md) {
+      display: block;
+      margin-right: 38px;
+      margin-left: 26px;
+    }
 }
 
-.arrow {
+.slider-button .arrow {
   width: 6px;
   height: 9px;
 }
@@ -97,40 +138,69 @@ $gray: #D1D3E0;
   transform: rotate(180deg);
 }
 
-.slider {}
-
 .slick-slide {
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+    @media (min-width: breakpoints.$breakpoint-xl) {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
 }
 
 .slick-list {
-  margin-left: -20px;
-  margin-right: -20px;
+  overflow: visible;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .slick-dots {
-    top: -50px;
-    // left: 0;
-    display: flex;
-    gap: 6px;
-    // width: 100%;
-    padding: 0;
-    margin: 0;
+  width: max-content;
+  display: flex !important;
+  justify-content: center;
+  gap: 6px;
+  padding: 20px 0;
+  list-style: none;
+  top: -30px;
+  left: 0;
 
-      li {
-        width: 70px;
-        height: 3px;
-        background-color: $secondary-light-color;
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      top: -50px;
+    }
+
+  li {
+    width: auto;
+    height: 4px;
+
+    button {
+      width: 70px;
+      height: 3px;
+      padding: 0;
+      background-color: variables.$secondary-light-color;
+      border: none;
+      transition: background-color 0.3s ease;
+
+      &::before {
+        display: none;
       }
-}
+    }
 
-.slick-active {
-  background-color: $secondary-dark-color;
+    &.slick-active button {
+      background-color: variables.$secondary-dark-color;
+    }
+  }
 }
 
 .slide {
   width: 100%;
+}
+
+.slide-image {
+  max-height: 300px;
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      max-height: 100%;
+    }
 }
 
 .details-description {
@@ -139,42 +209,93 @@ $gray: #D1D3E0;
   justify-content: space-between;
   position: relative;
   z-index: 1;
-  background-color: $background-primary;
+  background-color: variables.$background-primary;
   text-transform: uppercase;
-  padding: 22px 56px 28px 56px;
-  border-bottom: 3px solid $secondary-light-color;
-  margin: -120px 20px 0 20px;
-  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
-  // box-shadow: 0px 55px 24px -32.4px rgba(157, 173, 200, 0.44);
+  padding: 8px;
+  border-bottom: 3px solid variables.$secondary-light-color;
+  margin: -60px 8px 0 8px;
 
+    &::after {
+    content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 12px 20px rgba(0, 41, 120, 0.2);
+      z-index: -1;
+  }
+
+    @media (min-width: breakpoints.$breakpoint-md) {
+      padding: 16px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      padding: 16px 40px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      padding: 22px 56px 28px 56px;
+      margin: -120px 20px 0 20px;
+    }
 }
 
 .general-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: $primary-color;
+  color: variables.$primary-color;
 }
 
 .price {
   font-weight: 400;
-  font-size: 43px;
+  font-size: 18px;
   line-height: 100%;
   letter-spacing: -1.32px;
-  padding-bottom: 24px;
+  padding-bottom: 8px;
+
+    @media (min-width: breakpoints.$breakpoint-md) {
+      font-size: 24px;
+      padding-bottom: 12px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      font-size: 43px;
+      padding-bottom: 24px;
+    }
 }
 
 .name {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 12px;
   line-height: 100%;
   letter-spacing: 3.6px;
-  padding-bottom: 16px;
+  padding-bottom: 8px;
+
+    @media (min-width: breakpoints.$breakpoint-sm) {
+      font-size: 14px;
+      padding-bottom: 12px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      font-size: 18px;
+      padding-bottom: 16px;
+    }
 }
 
 .address {
   font-weight: 400;
+  font-size: 12px;
   letter-spacing: 2.1px;
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      font-size: 14px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      font-size: 16px;
+    }
 }
 
 .apartment-info {
@@ -187,33 +308,61 @@ $gray: #D1D3E0;
   display: flex;
 }
 
-.infoBlock {
+.info-block {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 8px 40px 4px;
-  color: $primary-light-color;
+  padding: 4px 6px;
+  color: variables.$primary-light-color;
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      padding: 8px 16px 4px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      padding: 8px 40px 4px;
+    }
 
     &:last-child {
       padding-right: 0;
     }
 
     &:not(:last-child) {
-      border-right: 1.2px solid $gray;
+      border-right: 1.2px solid variables.$gray;
     }
 }
 
 .numbers {
   font-weight: 400;
-  font-size: 30px;
+  font-size: 16px;
   letter-spacing: 3px;
+
+    @media (min-width: breakpoints.$breakpoint-sm) {
+      font-size: 18px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      font-size: 24px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      font-size: 30px;
+    }
 }
 
 .info-text {
   font-weight: 400;
-  font-size: 15.84px;
+  font-size: 12px;
   letter-spacing: 1.32px;
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      font-size:14px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      font-size:15.84px;
+    }
 }
 
 .view-details-button {
@@ -221,33 +370,59 @@ $gray: #D1D3E0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
   background-color: transparent;
   outline: none;
   border: none;
   margin-right: 0;
   margin-left: auto;
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      gap: 12px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      gap: 14px;
+    }
 }
 
 .view-details {
   font-weight: 300;
-  font-size: 15px;
+  font-size: 10px;
   letter-spacing: 2.6px;
   text-transform: uppercase;
-  color: $primary-color;
+  color: variables.$primary-color;
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      font-size: 12px;
+    }
+
+    @media (min-width: breakpoints.$breakpoint-3xl) {
+      font-size: 15px;
+    }
+}
+
+.view-details-button .arrow {
+  width: 6px;
+  height: 9px;
 }
 
 .view-all-button {
   width: max-content;
-  font-size: 300;
+  font-weight: 300;
   letter-spacing: 2.6px;
-  color: $primary-color;
-  padding: 12px 32px;
+  color: variables.$primary-color;
+  padding: 8px 24px;
   outline: none;
   border: none;
-  border-bottom: 2px solid $secondary-dark-color;
+  border-bottom: 2px solid variables.$secondary-dark-color;
   background-color: transparent;
   cursor: pointer;
-  margin-right: 100px;
+  margin-right: 20px;
   margin-left: auto;
+
+    @media (min-width: breakpoints.$breakpoint-lg) {
+      padding: 12px 32px;
+      margin-right: 100px;
+    }
 }

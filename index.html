@@ -28,66 +28,11 @@
       </div>
       <section class="slider-wrapper">
         <div class="slider-buttons">
-          <button class="slider-button"><img src="./assets/arrow.svg" alt="arrow left" class="arrow"/> <span>prev.</span></button>
+          <button class="slider-button prev-button"><img src="./assets/arrow.svg" alt="arrow left" class="arrow"/> <span>prev.</span></button>
           <div class="divider"></div>
-          <button class="slider-button"><span>next</span><img src="./assets/arrow.svg" alt="arrow right" class="arrow arrow-right" /></button>
+          <button class="slider-button next-button"><span>next</span><img src="./assets/arrow.svg" alt="arrow right" class="arrow arrow-right" /></button>
         </div>
-        <div class="slider">
-          <div class="slide">
-            <img src="./assets/slide.png" alt="slide"/>
-            <div class="details-description">
-              <div class="general-info">
-                <span class="price">$1,000,000</span>
-                <span class="name">82 Victory Lane</span>
-                <span class="adress">Westford, MA</span>
-              </div>
-              <div class="apartment-info">
-              <div class="info-block-wrapper">
-                <div class="infoBlock">
-                  <span class="numbers">2</span>
-                  <span class="info-text">BED</span>
-                </div>
-                <div class="infoBlock">
-                  <span class="numbers">2</span>
-                  <span class="info-text">BATH</span>
-                </div>
-                <div class="infoBlock">
-                  <span class="numbers">2,000</span>
-                  <span class="info-text">SQ FT</span>
-                </div>
-                </div>
-                <button class="view-details-button"><span class="view-details">view details</span><img src="./assets/arrow.svg" alt="arrow right" class="arrow arrow-right"/></button>
-              </div>
-            </div>
-          </div>
-            <div class="slide">
-            <img src="./assets/slide.png" alt="slide"/>
-            <div class="details-description">
-              <div class="general-info">
-                <span class="price">$1,000,000</span>
-                <span class="name">82 Victory Lane</span>
-                <span class="adress">Westford, MA</span>
-              </div>
-              <div class="apartment-info">
-              <div class="info-block-wrapper">
-                <div class="infoBlock">
-                  <span class="numbers">2</span>
-                  <span class="info-text">BED</span>
-                </div>
-                <div class="infoBlock">
-                  <span class="numbers">2</span>
-                  <span class="info-text">BATH</span>
-                </div>
-                <div class="infoBlock">
-                  <span class="numbers">2,000</span>
-                  <span class="info-text">SQ FT</span>
-                </div>
-                </div>
-                <button class="view-details-button"><span class="view-details">view details</span><img src="./assets/arrow.svg" alt="arrow right" class="arrow arrow-right"/></button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="slider"></div>
       </section>
       <button class="view-all-button">VIEW ALL</button>
     </div>
@@ -96,10 +41,87 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script>
+    const slidesData = [
+      {
+        price: "$1,000,000",
+        name: "82 Victory Lane",
+        address: "Westford, MA",
+        bed: 2,
+        bath: 2,
+        area: "2,000",
+        image: "./assets/slide.png",
+      },
+      {
+        price: "$1,000,000",
+        name: "82 Victory Lane",
+        address: "Westford, MA",
+        bed: 2,
+        bath: 2,
+        area: "2,000",
+        image: "./assets/slide.png",
+      },
+      {
+        price: "$1,000,000",
+        name: "82 Victory Lane",
+        address: "Westford, MA",
+        bed: 2,
+        bath: 2,
+        area: "2,000",
+        image: "./assets/slide.png",
+      },
+      {
+        price: "$1,000,000",
+        name: "82 Victory Lane",
+        address: "Westford, MA",
+        bed: 2,
+        bath: 2,
+        area: "2,000",
+        image: "./assets/slide.png",
+      },
+    ];
+
+    const createSlide = (data) => `
+      <article class="slide">
+        <img src="${data.image}" alt="Property at ${data.name}" class="slide-image"/>
+        <div class="details-description">
+          <div class="general-info">
+            <span class="price">${data.price}</span>
+            <span class="name">${data.name}</span>
+            <span class="address">${data.address}</span>
+          </div>
+          <div class="apartment-info">
+            <div class="info-block-wrapper">
+              <div class="info-block">
+                <span class="numbers">${data.bed}</span>
+                <span class="info-text">BED</span>
+              </div>
+              <div class="info-block">
+                <span class="numbers">${data.bath}</span>
+                <span class="info-text">BATH</span>
+              </div>
+              <div class="info-block">
+                <span class="numbers">${data.area}</span>
+                <span class="info-text">SQ FT</span>
+              </div>
+            </div>
+            <button class="view-details-button">
+              <span class="view-details">view details</span>
+              <img src="./assets/arrow.svg" alt="arrow right" class="arrow arrow-right" />
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+
     $(document).ready(function () {
-      $('.slider').slick({
+      const $slider = $('.slider');
+      slidesData.forEach((slide) => {
+        $slider.append(createSlide(slide));
+      });
+
+      $slider.slick({
         dots: true,
-        arrows: true,
+        arrows: false,
         infinite: true,
         slidesToShow: 2,
         slidesToScroll: 1,
@@ -117,6 +139,14 @@
             },
           },
         ],
+      });
+
+      $('.prev-button').on('click', function () {
+        $slider.slick('slickPrev');
+      });
+
+      $('.next-button').on('click', function () {
+        $slider.slick('slickNext');
       });
     });
   </script>
