@@ -5,26 +5,53 @@ body {
 
 .page {
   font-family: "Montserrat", sans-serif;
-  max-width: 1750px;
-  padding: 32px 16px;
   margin: 0 auto;
   height: 100%;
+  position: relative;
 }
-@media (min-width: 640px) {
-  .page {
-    padding: 40px 24px;
+
+.rectangle-image {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 55%;
+  display: none;
+}
+@media (min-width: 1024px) {
+  .rectangle-image {
+    display: block;
   }
 }
-@media (min-width: 1536px) {
-  .page {
-    padding: 100px 50px 50px 50px;
+
+.cells-image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+@media (min-width: 1024px) {
+  .cells-image {
+    width: 45%;
   }
 }
 
 .content {
+  max-width: 1750px;
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+@media (min-width: 640px) {
+  .content {
+    padding: 40px 24px;
+  }
+}
+@media (min-width: 1536px) {
+  .content {
+    padding: 100px 50px 50px 50px;
+  }
 }
 
 .title {
