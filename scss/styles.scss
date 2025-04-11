@@ -79,10 +79,6 @@ body {
     @media (min-width: breakpoints.$breakpoint-lg) {
       gap: 24px;
     }
-
-    @media (min-width: breakpoints.$breakpoint-xl) {
-      gap: 32px;
-    }
 }
 
 .header-text {

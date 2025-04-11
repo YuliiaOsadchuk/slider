@@ -83,11 +83,6 @@ body {
     gap: 24px;
   }
 }
-@media (min-width: 1280px) {
-  .header {
-    gap: 32px;
-  }
-}
 
 .header-text {
   font-size: 24px;
